@@ -56,14 +56,57 @@ $().validate('set', {
 		}
 	},
 	'example' : {
-		error : 'doesn\'t say "peepee"',
+		error : 'Not valid HEXIDECIMAL',
 		valid : function(val, scope, input) {
-			return val == 'peepee';
+			return val.match(/\b[0-9A-F]{6}\b/gi);
 		}
 	}
 });
 ```
 
+Available Rules
+---------------
+- available as part of plugin
+- all rules start with the "f-" prefix
+```javascript
+// class="f-required"
+"required" : {
+	error : 'this field is required',
+	valid : function(val) {
+		return $.trim(val) != '';
+	}
+},
+// class="f-email"
+"email" : {
+	error : 'must be valid email',
+	valid : function(val) {
+		return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(val) || val == '';
+	}
+},
+// class="f-date"
+"date" : {
+	error : 'must be valid date mm/dd/yyyy',
+	valid : function(val) {
+		var bits = val.split('/'), y = bits[2], m  = bits[0], d = bits[1], daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+		if (( ! (y%4) && y%100) || ! (y%400)) daysInMonth[1] = 29;
+		return d <= daysInMonth[--m] || val == '';
+	}
+},
+// class="f-number"
+"number" : {
+	error : 'must be a number',
+	valid : function(val) {
+		return ! isNaN(val) || val == '';
+	}
+},
+// class="f-required-if-visible"
+"required-if-visible" : {
+	error : 'this field is required',
+	valid : function(val, scope, input) {
+		return ! input.is(':visible') || val != '';
+	}
+}
+```
 
 Throw error at whim
 -------------------
