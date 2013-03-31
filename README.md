@@ -69,6 +69,7 @@ Available Rules
 - available as part of plugin
 - all rules start with the "f-" prefix
 ```javascript
+
 // class="f-required"
 "required" : {
 	error : 'this field is required',
