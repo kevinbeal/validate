@@ -2,7 +2,8 @@ Validate Region w/ Success handler
 ----------------------------------
 - callback only runs on success
 - selector is the region to search for fields to validate
-	$('region').validate(function(){
+
+    $('region').validate(function(){
 		alert('validation passed');
 	}); 
 
@@ -12,7 +13,8 @@ Validate region w/out arguments
 -------------------------------
 - Returns true/false
 - throws no errors
-	if($('region').validate()) {
+
+    if($('region').validate()) {
 		alert('validation passed');
 	}
 
@@ -22,7 +24,8 @@ Validate region w/ both success and error handlers
 --------------------------------------------------
 - the error handler stops the normal error throwing behavior
 - error handler is passed the failed field and the error message
-	$('region').validate(function(){
+
+    $('region').validate(function(){
 		// validation passed
 	}, function(input, message){
 		// validation failed
@@ -40,7 +43,8 @@ Add validation rule
 - the "valid" property must return true if passing, otherwise false
 - if you don't want the new rule you need to include "OR value is equal to ''" condition
 - "scope" argument is the element that .validate() was called on
-	$().validate('set', {
+
+    $().validate('set', {
 		'zip' : {
 			error : 'Not a valid zipcode',
 			valid : function(val, scope, input) {
@@ -61,6 +65,7 @@ Throw error at whim
 -------------------
 - second parameter is whatever string you want
 - selector should be whatever you want error to show on, doesn't even have to be an input
+
 	$(input).validate('error', 'my custom error');
 
 
