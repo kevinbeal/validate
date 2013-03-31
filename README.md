@@ -70,7 +70,9 @@ Throw error at whim
 - second parameter is whatever string you want
 - selector should be whatever you want error to show on, doesn't even have to be an input
 
-```$(input).validate('error', 'my custom error');```
+```
+$(input).validate('error', 'my custom error');
+```
 
 
 
